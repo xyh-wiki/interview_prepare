@@ -1,0 +1,12 @@
+Map阶段
+1.对数据进行切片;
+2.对每一行数据进行Map操作，输出KV键值对，即中间结果;
+3.由于需要多次的读写操作，效率低；将中间结果放入一个环形缓冲区，在写入的过程中添加分区属性（MapoutputBuffer 对Key分区,通过key的HashCode的值%numReduceTask的个数(注意值不为负数)此时的Key被标记).
+4.当达到一定的该缓存区的80%的时候,会溢出小文件，对小文件进行归并、排序操作，保证分区内数据是有序的.
+6.OutputFormat将归并后的key和value输出到本地文档上.
+
+Reduce阶段
+1.通过shuffle,将本地文档上的Key和value下载到ReduceTask上,
+2.此时,将Key和Value进行排序,归并.
+3.GroupingPartition类中的方法,compare方法将相邻的两个key进行比较,如果相同,放入迭代器中,迭代values;如果不相同,就会重新创建一个迭代器进行迭代;
+4.提交任务,输出到指定文件上;

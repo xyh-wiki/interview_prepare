@@ -1,0 +1,16 @@
+1.client  向 ResourceManager申请资源，返回一个applicationID
+2.client 上传 spark jars 下面的 jar包、自己写的 jar和配置
+3.ResourceManager 随机找一个资源充足的NodeManager
+4.然后通过RPC让NodeManager从HDFS上下载jar包和配置，启动ApplicationMaster
+5.ApplicationMaster 向ResourceManager申请资源
+6.ResourceManager中的ResourceScheduler 找到符合条件的NodeManger,将NodeManager 的信息返回给ApplicationMaster
+7.ApplicationMaster跟返回的NodeManager进行通信
+8.NodeManager从HDFS下载依赖
+9.NodeManager启动Executor
+10.Executor启动之后返向向ApplicationMaster注册
+
+
+
+
+yarn cluster模式：spark driver和application master在同一个节点上
+yarn client模式：spark driver和client在同一个节点上，支持shell
