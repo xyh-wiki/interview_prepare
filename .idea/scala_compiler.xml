@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ScalaCompilerConfiguration">
-    <profile name="Maven 1" modules="interview_prepare">
+    <profile name="Maven 1" modules="Flink-scala,interview_prepare">
       <parameters>
         <parameter value="-nobootcp" />
         <parameter value="-target:jvm-1.8" />

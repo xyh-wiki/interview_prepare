@@ -1,0 +1,5 @@
+1. executor-cores —— 每个executor使用的内核数，默认为1，官方建议2-5个，我们企业是4个
+2. num-executors —— 启动executors的数量，默认为2
+3. executor-memory —— executor内存大小，默认1G
+4. driver-cores —— driver使用内核数，默认为1
+5. driver-memory —— driver内存大小，默认512M

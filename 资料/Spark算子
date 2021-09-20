@@ -1,0 +1,47 @@
+transformation 算子
+1. 单 value:
+    （1）map
+    （2）mapPartitions
+    （3）mapPartitionsWithIndex
+    （4）flatMap
+    （5）glom
+    （6）groupBy
+    （7）filter
+    （8）sample
+    （9）distinct
+    （10）coalesce
+    （11）repartition
+    （12）sortBy
+    （13）pipe
+
+2. 双 value:
+    （1）intersection
+    （2）union
+    （3）subtract
+    （4）zip
+
+3. k-v:
+    （1）partitionBy
+    （2）reduceByKey
+    （3）groupByKey
+    （4）aggregateByKey
+    （5）foldByKey
+    （6）combineByKey
+    （7）sortByKey
+    （8）mapValues
+    （9）join
+    （10）cogroup
+
+
+action 算子:
+    （1）reduce
+    （2）collect
+    （3）count
+    （4）first
+    （5）take
+    （6）takeOrdered
+    （7）aggregate
+    （8）fold
+    （9）countByKey
+    （10）save
+    （11）foreach
