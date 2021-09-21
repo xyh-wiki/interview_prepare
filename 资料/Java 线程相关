@@ -1,0 +1,50 @@
+1. Java 自带哪几种线程池
+    1) newCachedThreadPool
+    2) newFixedThreadPool
+    3) newSingleThreadExecutor
+    4) newScheduleThreadPool
+
+2. 多线程有几种实现方式
+    四种, 分别为
+    继承 Thread 类
+    实现 Runnable 接口
+    实现 Callable 接口通过 FutureTask 包装器来创建 Thread 线程
+    通过线程池来创建线程, 使用线程池接口 ExecutorService 结合 Callable,Future 实现所有返回结果的多线程
+    前两种无返回值(重写了 run 方法, run 返回值为 void)
+    后两种有返回值(实现了 call 方法, 这个方法的返回值是 object)
+
+
+3. 线程有哪几种状态
+    1. 初始状态(new): 新创建了一个线程对象, 但是还没有调用 start() 方法
+    2. 运行(Runnable): java 线程中将就绪(ready)和运行中(running)两种状态统称为运行
+    3. 阻塞(Blocked): 表示线程阻塞于锁
+    4. 等待(Waiting): 表示该状态的线程需要等待其他线程做出一些特定的动作(通知或中断).
+    5. 超时等待(Timed_Waiting): 该状态不同于等待, 他可以在指定的时间后自行返回
+    6. 终止(Terminated): 表示该线程已经执行完毕
+
+4. sleep（）和wait（）有什么区别
+    类的不同：sleep来自Thread，而wait来自Object。
+    释放锁：sleep不释放锁，wait释放锁。
+    用法不同：sleep时间到后会自动恢复，wait可以使用notify（）/notifyAll（）直接唤醒
+
+5. 线程的run()和start()的区别
+    Start方法用于启动线程，run方法用于执行线程的运行时代码。Run可重复调用，而start只能调用一次
+
+6. 线程创建方式有几种
+    7 种, 最核心的是ThreadPoolExecutor()
+
+7. 线程池中submit()和execute()方法有什么区别？
+    Execute()执行：只能执行Runnable类型的任务。
+    Submit()提交：可以执行Runnable和Callable<可赎回>类型的任务。
+    Callable类型的任务可以获取执行的返回值，而Runnable执行无返回值。
+
+8. 在Java程序中怎么保证多线程的运行安全
+    方法一：使用安全类，比如java.util.concurrent下的类
+    方法二：使用自动锁Synchronize
+    方法三：使用手动锁Lock
+
+9. 怎么防止死锁
+    尽量使用tryLock(long timeout,TimeUnit unit)的方法(ReentrantLock、ReentrantReadWriteLock)，设置超时时间，超时可以退出防止死锁。
+    尽量使用java.util.concurrent并发类代替自己手写锁。
+    尽量降低锁的使用粒度，尽量不要几个功能用同一把锁。
+    尽量减少同步的代码块

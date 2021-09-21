@@ -1,0 +1,11 @@
+方法一:
+    1. 按照 key 对数据进行聚合(groupByKey)
+    2. 将 value 转换为数组, 利用 scala 的 sortBy 或者 sortWith 进行排序, 但是如果 mapValues 的数据量太大, 会 OOM(out or memory)
+
+方法二:
+    1. 取出所有的 key
+    2. 对 key 进行迭代, 每次取出一个 key 利用 spark 的排序算子进行排序
+
+方法三:
+    1. 自定义分区器, 按照 key 进行分区, 使不同的 key 进入到不同的分区
+    2. 对每个分区运用 spark 排序算子进行排序

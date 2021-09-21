@@ -1,0 +1,16 @@
+1. 使用 Hive ETL 预处理数据
+    此时可以评估一下, 是否可以通过 hive 来进行数据预处理(即通过 hive ETL 预先对数据按照 key 进行聚合, 或者是预先和其他表 join), 然后再 Spark
+    作业中针对的数据源就不是原来的饿 Hive 表了, 而是预处理之后的 Hive 表, 此时数据已经预先进行过聚合或者 join 操作了, 那么在 Spark 作业中
+    也就不需要使用原来的 shuffle 类算子执行这类操作了
+
+2. 过滤少数导致数据倾斜的 key
+    如果我们判断那几个少数数据量特别多的 key, 对作业的执行和计算结果不是特别重要, 那么干脆直接过滤掉那几个少数的 key
+
+3. 提高 shuffle 操作的并行度
+    在对 RDD 执行 shuffle 算子时, 给 shuffle 算子传入一个参数, 比如 reduceBykey(1000), 该参数就设置了这个 shuffle 算子执行
+    时 shuffle read task 的数量, 即 spark.sql.shuffle.partitions, 该参数代表了 shuffle read task 的并行度, 默认是 200
+
+4. 两阶段聚合(局部聚和加全局聚合)
+    第一次局部聚合, 每个 key 都打上一个随机数, 局部聚合之后, 再把随机数去掉, 再进行全局聚合, 就能得到最终结果
+
+5. reduce join转换为 map join
