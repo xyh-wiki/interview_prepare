@@ -1,0 +1,8 @@
+Flink 实时计算为了容错, 可以将中间数据定期保存起来, 这种定期触发中间结果的机制叫做 CheckPointing. CkeckPointIng 是周期性
+执行的, 具体的流程是 JobManager 定期的向 TaskManager 中的 SubTask 发送 RPC 消息, SubTask 定期将计算的 Satate 保存到
+StateBackend 中, 并且向 JobManager 响应 CheckPoint 是否成功.如果程序出现异常或者重启, TaskManager 中的 SubTask 可以从上一次
+成功的 CheckPointing 的 State 恢复
+
+Flink 两种作业快照机制
+    1> checkPoint 周期性生成快照, 将状态持久化保存下来
+    2> savePoint 需要手动触发

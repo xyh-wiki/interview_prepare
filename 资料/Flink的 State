@@ -1,0 +1,10 @@
+state 的概念
+    State 是 Flink 计算过程的中间结果和状态信息, 为了容错, 必须把状态持久化到一个外部系统中
+flink提供了三种状态存储方式: 内存存储, 文件存储和 RocksDB 存储
+state 的分类
+    1> keyedState
+    调用 keyBy 方法后, 每个分区相互独立的 State
+    2> OperatorState
+    没有 keyBy, 每个 Task 自己维护一个状态
+    BroadcastState:
+        广播 state, 一个可以通过 connect 方法获取广播流的数据, 广播流的特点是可以动态进行更新

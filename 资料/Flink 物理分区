@@ -1,0 +1,6 @@
+1. hash(keyBy)
+2. 随机(shuffle)
+3. 轮询(rebalance)
+4. 在一个 TaskManager 中轮询(rescaling)
+5. 广播(boardcast)
+6. 自定义(partitionCustom)
