@@ -10,7 +10,7 @@ flume 拦截器:
         1. 实现 interceptor
         2. 重写四个方法
         3. 静态内部类, 实现 interceptor.Builder
-    拦截器可以不适用, 需要在下一级 hive 的 dwd 层和 sparksteaming 里处理
+    拦截器可以不使用, 需要在下一级 hive 的 dwd 层和 sparksteaming 里处理
     优势: 只处理一次, 轻度处理; 劣势: 影响性能, 不适合做实事推荐这种对实时性要求比较高的场景
 
 flume channel 选择器
