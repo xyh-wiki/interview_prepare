@@ -1,0 +1,5 @@
+1. Shell 常用工具
+    awk, sed, cut, sort
+2. shell 写过那些脚本
+    1> 集群启动, 分发脚本
+    2> 数仓层级内部的导入: ods -> dwd -> dws -> dwt -> ads

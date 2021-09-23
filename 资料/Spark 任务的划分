@@ -1,4 +1,4 @@
-1> application: 初始化一个 SparkTask 就会生成一个 Application
+1> application: 初始化一个 SparkContext 就会生成一个 Application
 2> job: 一个 action 算子就会生成一个 job
 3> stage: stage 的个数等于宽依赖的个数 + 1
 4> task: 一个 Stage 中, 最后一个 RDD 的分区个数就是 Task 的个数

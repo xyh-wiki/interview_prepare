@@ -1,0 +1,22 @@
+flume 组成:
+    1. taildir source
+    2. file channel/memory channel
+    3. hdfs sink
+    4. 事务: source 到 channel 是 put 事务, channel 到 sink 是 take 事务
+
+flume 拦截器:
+    采用拦截器的优缺点: 优点, 模块化开发和可移植性; 缺点, 性能会低一些
+    自定义拦截器的步骤:
+        1. 实现 interceptor
+        2. 重写四个方法
+        3. 静态内部类, 实现 interceptor.Builder
+    拦截器可以不适用, 需要在下一级 hive 的 dwd 层和 sparksteaming 里处理
+    优势: 只处理一次, 轻度处理; 劣势: 影响性能, 不适合做实事推荐这种对实时性要求比较高的场景
+
+flume channel 选择器
+    Replicating: 默认选择器. 功能: 将数据发往下一级所在的通道
+    Multiplexing: 选择性发往指定通道
+
+flume 监控器
+    采用 gnaglia 监控器, 监控到flume 尝试提交的次数远远大于最终成功的次数, 说明 flume 运行比较差
+    解决:增加服务器台数

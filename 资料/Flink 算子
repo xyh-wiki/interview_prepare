@@ -1,0 +1,4 @@
+FlinkTransFormation
+    map, flatMap, filter, connect, split, select, keyBy, reduce
+FlinkSink
+    print, writeAsText, writeAsCsv, writeToSocket
