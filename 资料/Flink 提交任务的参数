@@ -1,0 +1,6 @@
+-m yarn-cluster 以yarn-cluster模式运行
+-c 指定main方法的全类名
+-p 指定job的并行度
+-yjm 指定jobManager的内存（AppMaster）
+-ytm taskManager的内存
+-ys 一个TaskManager的槽数

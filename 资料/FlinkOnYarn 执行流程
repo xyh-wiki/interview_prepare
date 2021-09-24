@@ -8,3 +8,6 @@
 6 ResourceManager分配Container资源后，由ApplicationMaster通知资源所在节点的NodeManager启动TaskManager
 7 NodeManager加载Flink的Jar包和配置构建环境并启动TaskManager
 8 TaskManager启动后向JobManager发送心跳包，并等待JobManager向其分配任务。
+
+per-job 模式,
+yarn-session 模式

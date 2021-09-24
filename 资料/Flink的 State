@@ -3,6 +3,7 @@ state 的概念
 flink提供了三种状态存储方式: 内存存储, 文件存储和 RocksDB 存储
 state 的分类
     1> keyedState
+        mapState, valueState, listState
     调用 keyBy 方法后, 每个分区相互独立的 State
     2> OperatorState
     没有 keyBy, 每个 Task 自己维护一个状态

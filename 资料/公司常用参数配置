@@ -15,3 +15,10 @@
         3> 19888 历史服务器
         4> 8020 客户端访问集群端口
 7. flink yarn 配置的最大重启次数是 10 次
+8. 公司是怎么提交实时任务的, 有多少 JobManager
+    我们使用 yarnSession 模式提交任务, 集群默认只有一个 jobManager, 但是为了放置单点故障, 我们配置了高可用, 对于 standAlone
+    模式, 我们公司一般配置一个主jobManager, 两台备用的 JobManager, 然后结合 Zookeeper 的使用, 来达到高可用; 对于 Yarn 模式,
+    yarn 在 JobManager 故障会自动进行重启, 多易只需要一个, 我们配置的最大重启次数是 10 次
+
+代表人, 杨冰
+位置: 上海市杨浦区黄兴路互联宝地 C1-C3 四层-五层
