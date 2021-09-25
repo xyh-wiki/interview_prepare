@@ -1,4 +1,4 @@
-flume 组成:
+flume (日志采集)组成:
     1. taildir source
     2. file channel/memory channel
     3. hdfs sink
