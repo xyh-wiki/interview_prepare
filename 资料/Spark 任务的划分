@@ -2,3 +2,26 @@
 2> job: 一个 action 算子就会生成一个 job
 3> stage: stage 的个数等于宽依赖的个数 + 1
 4> task: 一个 Stage 中, 最后一个 RDD 的分区个数就是 Task 的个数
+
+spark 中的概念:
+    1. application
+    使用SparkSubmit提交的个计算应用，一个Application中可以触发多次Action，触发一次Action产生一个Job，
+    一个Application中可以有一到多个Job
+
+    2. job
+    Driver向Executor提交的作业，触发一次Acition形成一个完整的DAG，一个DAG对应一个Job，一个Job中有一到多个Stage，
+    一个Stage中有一到多个Task
+
+    3. DAG
+    有向无环图，是对多个RDD转换过程和依赖关系的描述，触发Action就会形成一个完整的DAG，一个DAG对应一个Job
+
+    4. stage
+    任务执行阶段，Stage执行是有先后顺序的，先执行前的，在执行后面的，一个Stage对应一个TaskSet，
+    一个TaskSet中的Task的数量取决于Stage中最后一个RDD分区的数量
+
+    5. task
+    Spark中任务最小的执行单元，Task分类两种，即ShuffleMapTask和ResultTask
+    Task其实就是类的实例，有属性（从哪里读取数据），有方法（如何计算），Task的数量决定决定并行度，同时也要考虑可用的cores
+
+    6. taskSet
+    保存同一种计算逻辑多个Task的集合，一个TaskSet中的Task计算逻辑都一样，计算的数据不一样

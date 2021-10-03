@@ -10,7 +10,12 @@
   </component>
   <component name="ProjectPlainTextFileTypeManager">
     <file url="file://$PROJECT_DIR$/资料/Flink 实现 ExactlyOnce 和 AtLeastOnce" />
+    <file url="file://$PROJECT_DIR$/资料/java 中 jvm 的调优" />
     <file url="file://$PROJECT_DIR$/资料/Java 线程相关" />
+    <file url="file://$PROJECT_DIR$/资料/mysql 相关" />
+    <file url="file://$PROJECT_DIR$/资料/Spark 任务的划分" />
+    <file url="file://$PROJECT_DIR$/资料/zookeeoper 在 kafka 中的作用" />
+    <file url="file://$PROJECT_DIR$/资料/公司常用参数配置" />
     <file url="file://$PROJECT_DIR$/资料/项目讲述" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">

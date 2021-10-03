@@ -1,0 +1,9 @@
+在 kafka 中,主要是通过 ISR 机制来保证消息的可靠性的.
+在 kafka 中有备份日志 replica, replica 又分为 leader 和 follower, leader 负责读写操作, follower 是为了放置消息丢失做复制,
+    当做候选 leader
+ISR(in sync replica): 是 kafka 动态维护的一组副本, 在 ISR 中有成员存活时, 只有这个组的成员才能成为 leader, 内部保存的为每次提交信息
+    时必须同步的副本, 当 leader 挂掉的时候, 在 ISR 集合中选举出一个 follower 作为 leader 提供服务, 当 ISR 的副本被认为坏掉的时候,
+    会被踢出 ISR, 当重新跟上 leader 的消息数据时, 重新进入 ISR.
+ISR 如何实现同步的
+    broker 的 offset 分为三种, base offset, high watermark(HW), log end offset(LEO)
+    base offset 代表起始位移, HW 代表已经完成同步的数据的位置, LEO 代表已经写入的最新位置

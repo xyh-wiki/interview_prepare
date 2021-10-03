@@ -3,6 +3,12 @@
 3. kafka 的分区数一般是 3-10
 4. kafka 一般有多少日志类型就有多少 topic, 也有对日志类型进行合并的
 5. kafka 默认分区策略 range(还有一种是 roundrobin)
+9. clickhouse 的存储量是可以无限扩展的(增量千万级别的), 可以一直添加节点, redis 节点也是可以根据需求扩展的
+10. clickhouse 的并发在几百左右, redis 的并发在几千左右(一个节点)24 小时
+11. 日活量正常 250 万左右, 埋点日志每天增量 200G 左右, 日志数据格式 json , 数仓总共所有表的数量四百的多个
+12. 每天日志增量: 200G 左右吧
+flink 集群测试是 8 台
+集群搭建: 基于 CDH 搭建(运维负责)
 6. 端口号
     spark:
         1> 4040 spark-shell 端口号
@@ -14,12 +20,27 @@
         2> 8088 访问 MR 的端口号
         3> 19888 历史服务器
         4> 8020 客户端访问集群端口
+    flink:
+        1> 8081 webUI
 7. flink yarn 配置的最大重启次数是 10 次
 8. 公司是怎么提交实时任务的, 有多少 JobManager
     我们使用 yarnSession 模式提交任务, 集群默认只有一个 jobManager, 但是为了放置单点故障, 我们配置了高可用, 对于 standAlone
     模式, 我们公司一般配置一个主jobManager, 两台备用的 JobManager, 然后结合 Zookeeper 的使用, 来达到高可用; 对于 Yarn 模式,
-    yarn 在 JobManager 故障会自动进行重启, 多易只需要一个, 我们配置的最大重启次数是 10 次
+    yarn 在 JobManager 故障会自动进行重启, 我们只需要一个, 我们配置的最大重启次数是 10 次
 
 代表人, 杨冰
 位置: 上海市杨浦区黄兴路互联宝地 C1-C3 四层-五层
-9. 用户画像标签大概有一千多个
+
+版本问题:
+flink: 1.10
+hbase: 2.2
+kafka: 2.6
+jdk: 1.8
+redis: 3.2
+spark: 2.4.8
+hive: 3.1.1
+clickhouse:
+pom文件中, scope 是控制依赖是否打包的, provide 参数使用范围是测试代码和程序主代码, 参与打包, runtime 使用范围是测试代码, 不参与打包
+    test 测试, 参与打包
+kafka 有几十个个 topic, 我负责的几个
+

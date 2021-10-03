@@ -1,0 +1,6 @@
+Hbase 中表是由一个或多个分区(Region)组成, Region 由 RegionServer 进程管理, 一个 RegionServer 管理多个 Region.
+表中的数据按照 rowKey 被划分到不同的 Region 中, 一个 Region 存储的是一段 rowKey 连续的数据.
+这样在设计表的时候需要考虑表的均衡性, 同时导致读请求也会集中到固定的一个或者几个 RegionServer 上, 会出现单个 RegionServer 负载过高
+    而导致响应过慢的情况, 所以在设计表的时候, 尽量使表的 rowKey 随机打散, 数据可以均匀的分布到集群的每个节点上, 通过 rowKey 读取
+    读取数据的时候先根据 rowKey 从元数据中确定 rowKey 所在的分区, 然后客户端直接发送 rpc 请求给数据所在的 regionServer, 而不需要
+    访问其他的 regionServer.

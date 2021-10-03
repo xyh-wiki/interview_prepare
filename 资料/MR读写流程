@@ -10,3 +10,6 @@ Reduce阶段
 2.此时,将Key和Value进行排序,归并.
 3.GroupingPartition类中的方法,compare方法将相邻的两个key进行比较,如果相同,放入迭代器中,迭代values;如果不相同,就会重新创建一个迭代器进行迭代;
 4.提交任务,输出到指定文件上;
+
+
+mr中 map 个数由切片数量决定

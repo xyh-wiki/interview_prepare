@@ -1,0 +1,27 @@
+1. HMaster 分配数据到底存储在那个 regiserver 中
+    为 regionServer 分配 redion 数据
+    负责 RegionServer 负载均衡
+    管理用户定义的各种 DDL 操作(操作数据库, 如添加字段)//DML(增删改)
+
+2. HRegionServer
+    管理 master 并位其分配 region
+    处理来自客户端的请求
+    和底层 hdfs 交互, 存储数据到 hdfs
+    负责 region 变大之后的拆分
+
+客户端常用命令:
+    create_namespace
+    list_namespace
+    list, create, discribe, drop 等等
+
+1.在内部数据是按照 rowkey 排序的, 在 rowkey 上是有数据索引的, 查询的时候按照 rowkey 查询数据最快
+    rowkey 是维有序的, 值 rowkey, column key, timestamp(先 rowkey, 再...)
+2. Table 在行的方向上分割为多个 Hregion(表的行范围数据)
+3. Hredion 中存储的就是对应表的一段数据(stertKey , endKey)
+4. region 中的行数据可能有多个列组, 每个列组对应一个文件夹, 文件夹中存储的是当前列组的数据(在指定的 hdfs 中以 hfile 存储)
+5. hfile 是存储在 hdfs 中的一种特殊的文件, 每个文件中存储的是 kv
+6. 数据在进行插入的时候会记录操作行为日志; 日志是存储在 hdfs 上的, 保证数据安全
+7. region按大小分割的，每个表一开始只有一个region，随着数据不断插入表，region不断增大，当增大到一个阀值的时候，
+    Hregion就会等分会两个新的Hregion。当table中的行不断增多，就会有越来越多的Hregion。
+8. HRegion虽然是分布式存储的最小单元，但并不是存储的最小单元。事实上，HRegion由一个或者多个Store组成，每个store保存一个columns family,如果一张表的列族过多,那么响应的stroe就会过多
+   每个Strore又由一个memStore和0至多个StoreFile组成。如图：StoreFile以HFile格式保存在HDFS上

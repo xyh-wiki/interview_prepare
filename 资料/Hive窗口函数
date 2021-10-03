@@ -1,2 +1,8 @@
-1> Rank() 排序相同时会重复, 总数不会变
-2> Over() 指定分析函数工作的数据窗口大小, 这个窗口的大小可能会随着行的变化而变化
+1> OVER()：指定分析函数工作的数据窗口大小，这个数据窗口大小可能会随着行的变而变化
+2> CURRENT ROW：当前行  current row
+3> n PRECEDING：往前n行数据  n  preceding
+4> n FOLLOWING：往后n行数据  n following
+5> UNBOUNDED：起点，UNBOUNDED PRECEDING 表示从前面的起点， UNBOUNDED FOLLOWING表示到后面的终点  unbound preceding  unbound following
+6> LAG(col,n,[default])：往前第n行数据  lag  参数一 字段  n  lag
+7> LEAD(col,n)：往后第n行数据 lead
+8> NTILE(n)：把有序分区中的行分发到指定数据的组中，各个组有编号，编号从1开始，对于每一行，NTILE返回此行所属的组的编号。注意：n必须为int类型。  ntile(5)

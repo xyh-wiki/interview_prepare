@@ -1,7 +1,7 @@
 /**
  * @Author: RookieX
  * @Date: 2021/9/14 8:03 下午
- * @Description: 懒汉式单例(延迟加载)
+ * @Description: 懒汉式单例(延迟加载)线程不安全
  */
 public class Singleton2 {
 

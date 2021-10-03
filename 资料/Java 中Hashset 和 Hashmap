@@ -1,0 +1,15 @@
+1. Hashset 实现了 set 接口, 不允许集合出现重复元素, 仅存储对象;调用 add 想 set 添加元素
+2. hashmap 实现了 map 接口, map 接口对键值对进行映射. map 不允许有重复的 key, map 接口有两个基本的实现
+    treemap 和 hashmap, treemap 保存了对象的排列次序, 而 hashmap 不能;
+    存储键值对;
+    调用 put 想 map 添加元素;
+
+hashmap和 hashtable 的区别:
+    1> 继承的父类不同
+        hashmap 继承自 abstractMap 类, hashtable 继承自 dictionary 类
+    2> hashmap 线程不安全, hashtable线程安全
+    3> hashmap 没有 contains 方法, 但是有 containsKey 和 containsValue 方法, hashTable 有 contains 方法
+    4> hashMap 允许 key 和 value 为 null 值, hashTable 键值对都不能为空
+    5> 计算 hash 值的方式不同
+    6> 扩容方式不同
+    7> 解决 hash 冲突方式不同

@@ -1,0 +1,20 @@
+1.producer：
+　　消息生产者，发布消息到 kafka 集群的Borker(下面的Leader分区)。
+2.broker：
+　　kafka 集群中安装Kafka的服务器（容器），broker要有唯一的ID。
+3.topic：
+　　每条发布到 kafka 集群的消息属于的类别，即 kafka 是面向 topic 的(相当于数据库中的表)
+4.partition：
+　　partition 是物理上的概念，每个 topic 包含一个或多个 partition。kafka 分配的单位是 partition。
+5.consumer：
+　　从 kafka 集群中消费消息的终端或服务。
+6.Consumer group：
+　　high-level consumer API 中，每个 consumer 都属于一个 consumer group，每条消息只能被 consumer group 中的一个 Consumer 消费，但可以被多个 consumer group 消费。
+7.replication：
+　　partition 的副本，保障 partition 的高可用。
+8.leader：
+　　replica 中的一个角色， producer 和 consumer 只跟 leader 交互（leader分区负责对象）。
+9.follower：
+　　replica 中的一个角色，从 leader 中复制数据（follower分区负责同步数据）。
+10.zookeeper：
+　　kafka 通过 zookeeper 来存储集群的 meta 信息
