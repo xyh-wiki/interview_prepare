@@ -7,3 +7,13 @@ ISR(in sync replica): 是 kafka 动态维护的一组副本, 在 ISR 中有成�
 ISR 如何实现同步的
     broker 的 offset 分为三种, base offset, high watermark(HW), log end offset(LEO)
     base offset 代表起始位移, HW 代表已经完成同步的数据的位置, LEO 代表已经写入的最新位置
+
+生产者端:
+数据丢失的情况: ack=0 或者 ack=1
+数据重复的情况: ack=-1 时, 只要有一台 leader 和 follower 没有同步, 生产者就会重新发送消息, 造成消息重复
+避免重复: 开启精准一致性, 也就是幂等性, 再引入 producer 事务, 即客户端再传入一个全局唯一 id, 这样即使本次会话挂掉也能根据这个 id 找到
+    原来的事务状态
+
+消费者端:
+消费者是以维护offset的方式来消费数据的，所以如果在提交offset的过程中出问题，就会造成数据的问题，即已经消费了数据，但是offset没提交
+解决方案: 加大消费能力; 在下游对数据进行去重

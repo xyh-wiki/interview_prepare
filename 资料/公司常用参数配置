@@ -39,7 +39,8 @@ jdk: 1.8
 redis: 3.2
 spark: 2.4.8
 hive: 3.1.1
-clickhouse:
+clickhouse: 20._
+flume: 1.7
 pom文件中, scope 是控制依赖是否打包的, provide 参数使用范围是测试代码和程序主代码, 参与打包, runtime 使用范围是测试代码, 不参与打包
     test 测试, 参与打包
 kafka 有几十个个 topic, 我负责的几个

@@ -1,7 +1,7 @@
 flume (日志采集)组成:
-    1. taildir source
-    2. file channel/memory channel
-    3. hdfs sink
+    1. taildir source: 断点传续, 多目录
+    2. file channel/memory channel(我们用的是 kafka channel)
+    3. hdfs sink (kafka channel 不需要 sink)
     4. 事务: source 到 channel 是 put 事务, channel 到 sink 是 take 事务
 
 flume 拦截器:

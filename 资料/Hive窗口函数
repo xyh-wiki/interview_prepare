@@ -1,4 +1,5 @@
 1> OVER()：指定分析函数工作的数据窗口大小，这个数据窗口大小可能会随着行的变而变化
+    rank(留空), dense_rank(不留空), row_number(会根据顺序计算)bie
 2> CURRENT ROW：当前行  current row
 3> n PRECEDING：往前n行数据  n  preceding
 4> n FOLLOWING：往后n行数据  n following
