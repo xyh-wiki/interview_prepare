@@ -40,6 +40,8 @@ when: 当满足那些条件
 then: 判断当前 bean 是否满足规则的触发事件条件(判断规则中是否有用户画像条件等等)
 (mysql 规则元数据信息->canal 发送 dump 请求获取 binlog 二进制文件, 解析成 json 格式的, 发送到 kafka, flink 作为消费者从 kafka 拉取数据,
 解析 binlog, 解析成 javabean 对象, 将 binlog 规则数据流广播出去(.broadcast), 数据流 connect 规则流(.connect), 数据复制(.process), keyBy, 规则计算
+还有就是规则在 flink 内存中的存储模型, 此处的核心设计思想是把规则相关的信息(如规则名称, 规则参数对象, 规则 controller 对应的 drl 逻辑所构成的 kiesession),
+统一成一个 pojo 后存放在广播的 broadcastState 中
 
 2> service 层
 这一层主要提供各类规则条件的计算方法, 比如:
