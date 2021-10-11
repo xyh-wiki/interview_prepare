@@ -32,9 +32,13 @@ flink 集群测试是 8 台
 位置: 上海市杨浦区黄兴路互联宝地 C1-C3 四层-五层
 
 版本问题:
+hadoop: 3.1
+zookeeper: 3.5
+mysql: 5.7
 flink: 1.10
+canal: 1.1.2
 hbase: 2.2
-kafka: 2.6
+kafka: 2.4
 jdk: 1.8
 redis: 3.2
 spark: 2.4.8
