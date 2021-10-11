@@ -39,7 +39,7 @@
     Callable类型的任务可以获取执行的返回值，而Runnable执行无返回值。
 
 8. 在Java程序中怎么保证多线程的运行安全
-    方法一：使用安全类，比如java.util.concurrent下的类
+    方法一：使用安全类，比如java.util.concurrent下的类(condition 类, 和 lock 一起使用, blockingQueue 阻塞队列)
     方法二：使用自动锁Synchronize
     方法三：使用手动锁Lock
 

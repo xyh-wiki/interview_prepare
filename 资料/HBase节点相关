@@ -16,7 +16,7 @@
 
 1.在内部数据是按照 rowkey 排序的, 在 rowkey 上是有数据索引的, 查询的时候按照 rowkey 查询数据最快
     rowkey 是维有序的, 值 rowkey, column key, timestamp(先 rowkey, 再...)
-2. Table 在行的方向上分割为多个 Hregion(表的行范围数据)
+2. Table 在行的方向上分割为多个 Hregio n(表的行范围数据)
 3. Hredion 中存储的就是对应表的一段数据(stertKey , endKey)
 4. region 中的行数据可能有多个列组, 每个列组对应一个文件夹, 文件夹中存储的是当前列组的数据(在指定的 hdfs 中以 hfile 存储)
 5. hfile 是存储在 hdfs 中的一种特殊的文件, 每个文件中存储的是 kv
