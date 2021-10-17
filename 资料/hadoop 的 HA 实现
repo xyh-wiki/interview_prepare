@@ -1,0 +1,6 @@
+在 hadoop 1.x 版本中, 是没有 ha 的实现方式的, 他只有可以看做是冷备份的 secondary Namenode 起到冷备份的作用, 当 nameNode 挂掉
+的时候, 启动 SecondaryNameNode, 合并编辑日志和镜像文件
+
+在 hadoop 2.x 版本中, 有了 hdfs ha 功能, 也就是热备功能, 当主NN 挂掉之后, 备 NN 会立即启动然后接管主NN 为集群不断提供服务
+具体就是 NN 部署两个, 即 ActiveNN 和 StandlyNN, 再用一时间永远只有一个 NN 对外提供服务
+ZK 中有两个进程对两个 NN 进行监控, zk 主要负责故障检测, NN 选择, 健康检测等等

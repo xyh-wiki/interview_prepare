@@ -1,6 +1,6 @@
  flume (日志采集)组成:
     1. taildir source: 断点传续, 多目录, 可以记录偏移量, 不会重复采集数据, 不会丢失数据, 问题是如果修改了要采集的文件名会重复采集
-    2. file channel/memory channel(我们用的是 kafka channel), 配置 ack 为-1
+    2. file channel/memory channel(我们用的是 kafka channel), 配置 ack 为-1(fileChannel将数据写入磁盘, 保证数据不丢失, 速度慢, 容灾)
     3. hdfs sink (kafka channel 不需要 sink)
     4. 事务: source 到 channel 是 put 事务, channel 到 sink 是 take 事务
 

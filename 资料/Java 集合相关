@@ -1,0 +1,34 @@
+1. Hashset 实现了 set 接口, 不允许集合出现重复元素, 仅存储对象;调用 add 想 set 添加元素
+2. hashmap 实现了 map 接口, map 接口对键值对进行映射. map 不允许有重复的 key, map 接口有两个基本的实现
+    treemap 和 hashmap, treemap 保存了对象的排列次序, 而 hashmap 不能;
+    存储键值对;
+    调用 put 想 map 添加元素;
+    1.8 之前底层是数组+链表, 1.8 开始, 当 hash 值上的链表长度大于 8 时, 链表就转换成了一个红黑树, 默认容量是 16, 加载银子默认是 0.75
+    HashMap可以接受null键值和值，而Hashtable则不能；HashMap是非synchronized;HashMap很快；以及HashMap储存的是键值对等等
+
+hashmap和 hashtable 的区别:
+    1> 继承的父类不同
+        hashmap 继承自 abstractMap 类, hashtable 继承自 dictionary 类
+    2> hashmap 线程不安全, hashtable线程安全
+    3> hashmap 没有 contains 方法, 但是有 containsKey 和 containsValue 方法, hashTable 有 contains 方法
+    4> hashMap 允许 key 和 value 为 null 值, hashTable 键值对都不能为空
+    5> 计算 hash 值的方式不同
+    6> 扩容方式不同
+    7> 解决 hash 冲突方式不同
+
+
+集合分为 Map 和 Collection 两大类
+Collection 分为 List 和 Set, List 主要有 ArrayList 和 LinkedList, Set 有 HashSet
+Map 常用的就是 HashMap, 里边是键值对类型的
+
+集合和数组的区别:
+    区别1:
+    数组可以存储基本数据类型/引用数据类型
+    基本数据类型存的是值 引用数据类型存的是地址
+    数组在创建的时候 就会定义存储的数据类型 也就是只能存储一种数据类型
+    集合只能存储引用数据类型(对象)
+    集合中也可以存储基本数据类型(装箱)最终存储的还是 Object
+    如果没有泛型限定 默认存储的都是 Object类型的数据 也就是任意类型
+    区别2
+    数组长度是固定的,不能自动增长
+    集合是长度可变的,根据元素的多少来决定长度

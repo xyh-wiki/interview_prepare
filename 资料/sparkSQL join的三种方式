@@ -1,0 +1,11 @@
+1. shuffle hash join
+    小表数据量较大, 不适合广播, 可以根据join key 相同必然分区相同的原理, 将两张表分别按照 join key 进行重新分区, 这样就可以将
+    join 分而治之, 划分为很多小 join
+2. broadcast hash join
+    小表 join 大表, 设置阈值, 小表广播到大表所在的主机, 最简单的就是先发送给 driver, driver 再同一分发给所有的 executor
+3. sort merge join
+    大表 join 大表,
+    1.shuffle 阶段: 将两张大表根据 join key 进行重新分区, 两张表的数据分不到整个集群, 以便进行分布式管理
+    2. sort 阶段:对单个分区节点内的两张表, 分别进行排序
+    3. merge 阶段: 对排好序的两张表进行 join 操作, join 操作很简单, 分别便利两个有序序列, 碰到相同的 join key 就 merge 输出,
+        否则取更小的一边

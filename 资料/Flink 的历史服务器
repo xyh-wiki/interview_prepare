@@ -1,1 +1,1 @@
-运维配置的, 主要用于查看 job 的情况
+运维配置的, 主要用于查看 job 的情况, 任务停掉了也可以查看(flink-conf.yaml配置 task 的存档目录, 配置 historyServer 读取的目录)

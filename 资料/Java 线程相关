@@ -3,6 +3,14 @@
     2) newFixedThreadPool
     3) newSingleThreadExecutor
     4) newScheduleThreadPool
+    创建线程池7 个参数:
+     1. 线程池核心线程大小
+     2. 线程池最大线程数
+     3. 空闲线程存活时间
+     4. 空闲线程存活单位
+     5. 工作队列
+     6. 线程工厂
+     7. 拒绝策略
 
 2. 多线程有几种实现方式
     四种, 分别为
@@ -42,6 +50,10 @@
     方法一：使用安全类，比如java.util.concurrent下的类(condition 类, 和 lock 一起使用, blockingQueue 阻塞队列)
     方法二：使用自动锁Synchronize
     方法三：使用手动锁Lock
+9. synchronize 和 lock 的区别
+    1> synchronize 是一个关键字, 是委托给 JVM 执行的, lock 是 java 写的控制锁的代码, lock是一个类
+    2> 锁的释放: synchronize 发生异常会自动释放占有锁, 不会出现死锁; lock发生异常, 不会主动释放占有锁, 必须手动释放, 可能引起死锁
+    3> lock 可以通过 tryLock 来知道有没有获取锁, 而 synchronize 不能
 
 9. 怎么防止死锁
     尽量使用tryLock(long timeout,TimeUnit unit)的方法(ReentrantLock、ReentrantReadWriteLock)，设置超时时间，超时可以退出防止死锁。

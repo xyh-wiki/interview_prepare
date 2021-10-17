@@ -18,6 +18,9 @@
 　　replica 中的一个角色，从 leader 中复制数据（follower分区负责同步数据）。
 10.zookeeper：
 　　kafka 通过 zookeeper 来存储集群的 meta 信息
+    Zookeeper中保存Broker id和消费者offsets等信息，但是没有生产者信息
 
 将日志写到 kafka, 如何判断他已经断存了:
     可以使用kafka 的监控工具: Kafka Monitor
+
+kafka 分区数量一般是机器数量*cpu 核数
