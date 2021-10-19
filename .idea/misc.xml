@@ -16,6 +16,7 @@
     <file url="file://$PROJECT_DIR$/资料/java 中 jvm 的调优" />
     <file url="file://$PROJECT_DIR$/资料/Java 线程相关" />
     <file url="file://$PROJECT_DIR$/资料/Java 集合相关" />
+    <file url="file://$PROJECT_DIR$/资料/kafka 提高吞吐量" />
     <file url="file://$PROJECT_DIR$/资料/Kafka 的相关概念" />
     <file url="file://$PROJECT_DIR$/资料/mysql 相关" />
     <file url="file://$PROJECT_DIR$/资料/Spark 任务的划分" />
@@ -24,6 +25,7 @@
     <file url="file://$PROJECT_DIR$/资料/zookeeoper 在 kafka 中的作用" />
     <file url="file://$PROJECT_DIR$/资料/做过的性能调优" />
     <file url="file://$PROJECT_DIR$/资料/公司常用参数配置" />
+    <file url="file://$PROJECT_DIR$/资料/离线 idMapping" />
     <file url="file://$PROJECT_DIR$/资料/离线相关" />
     <file url="file://$PROJECT_DIR$/资料/项目讲述" />
   </component>

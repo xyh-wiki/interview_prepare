@@ -1,0 +1,12 @@
+在客户端编程代码中，消息的类叫做 ProducerRecord； ConsumerRecord；
+简单来说，kafka中的每个massage由一对key-value构成
+
+Kafka中的message格式经历了3个版本的变化了：version0 、 version1 、 version2
+
+crc：占用4个字节，主要用于校验消息的内容；
+magic：这个占用1个字节，主要用于标识 Kafka 版本。Kafka 0.10.x magic默认值为1
+attributes：占用1个字节，这里面存储了消息压缩使用的编码以及Timestamp类型。目前Kafka 支持 gzip、snappy 以及 lz4（0.8.2引入） 三种压缩格式；后四位如果是 0001 则表示 gzip 压缩，如果是 0010 则是 snappy 压缩，如果是 0011 则是 lz4 压缩，如果是0000则表示没有使用压缩。第4个bit位如果为0，代表使用create time；如果为1代表append time；其余位（第5~8位）保留；
+key length：占用4个字节。主要标识 Key的内容的长度；
+key：占用 N个字节，存储的是 key 的具体内容；
+value length：占用4个字节。主要标识 value 的内容的长度；
+value：value即是消息的真实内容，在 Kafka 中这个也叫做payload。
